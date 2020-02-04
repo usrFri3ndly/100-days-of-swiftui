@@ -16,16 +16,20 @@ struct ContentView: View {
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
-    var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople + 2)
+    var totalBill: Double {
         let tipSelection = Double(tipPercentages[tipPercentage])
         // attemp to convert checkAmount to a double
         let orderAmount = Double(checkAmount) ?? 0
         
-        
         let tipValue = orderAmount / 100 * tipSelection
         let grandTotal = orderAmount + tipValue
-        let amountPerPerson = grandTotal / peopleCount
+        
+        return grandTotal
+    }
+    
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let amountPerPerson = totalBill / peopleCount
         
         return amountPerPerson
     }
@@ -44,7 +48,7 @@ struct ContentView: View {
                     }
                 }
                 
-                Section(header: Text("How much tip do you want to leave?")) {
+                Section(header: Text("Tip Percentage")) {
                     Picker("Tip percentage", selection: $tipPercentage) {
                         ForEach(0..<tipPercentages.count) {
                             Text("\(self.tipPercentages[$0])%")
@@ -53,8 +57,12 @@ struct ContentView: View {
                     .pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section(header: Text("Total amount per person")) {
-                    Text("$\(totalPerPerson, specifier: "%.2f")")
+                Section(header: Text("Bill Total [Including Tip]")) {
+                    Text("£\(totalBill, specifier: "%.2f")")
+                }
+                
+                Section(header: Text("Total Per Person")) {
+                    Text("£\(totalPerPerson, specifier: "%.2f")")
                 }
             }
             
