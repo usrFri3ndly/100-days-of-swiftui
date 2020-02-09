@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+enum ActiveAlert {
+    case correct, incorrect
+}
+
 struct ContentView: View {
     
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
@@ -16,6 +20,8 @@ struct ContentView: View {
     @State private var score = 0
     @State private var showingScore = false
     @State private var scoreTitle = ""
+    @State private var scoreMessage = ""
+    @State private var activeAlert: ActiveAlert = .correct
     
     var body: some View {
         ZStack {
@@ -56,18 +62,29 @@ struct ContentView: View {
             }
         }
         .alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) {
+            switch activeAlert {
+            case .correct:
+                return Alert(title: Text(scoreTitle), message: Text(scoreMessage), dismissButton: .default(Text("Continue")) {
+                        self.askQuestion()
+                    })
+            case .incorrect:
+                return Alert(title: Text(scoreTitle), message: Text(scoreMessage), dismissButton: .default(Text("Continue")) {
                     self.askQuestion()
                 })
+            }
         }
     }
     
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
-            scoreTitle = "Correct"
             score += 1
+            scoreTitle = "Correct"
+            scoreMessage = "Your score is \(score)"
+            self.activeAlert = .correct
         } else {
             scoreTitle = "Incorrect"
+            scoreMessage = "Thats the flag of \(countries[number])\n Your score is \(score)"
+            self.activeAlert = .incorrect
         }
         
         showingScore = true
