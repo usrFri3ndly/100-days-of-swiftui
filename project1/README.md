@@ -1,6 +1,7 @@
 # Project 1 - WeSplit
 
 ![App Screenshot 1](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project1/screenshot.png)
+![App Screenshot 2](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project1/screenshot-no-tip.png)
 
 ## Challenges
 
