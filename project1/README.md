@@ -21,3 +21,9 @@
 > Change the “Number of people” picker to be a text field, making sure to use the correct keyboard type.
 
 [Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/1c6118547f348776d6aeebd0a96569b75e4305e4#diff-eeb28b694e178d22952bf92a025a892c)
+
+### Project 3 - Challenge 2
+
+> Go back to project 1 and use a conditional modifier to change the total amount text view to red if the user selects a 0% tip.
+
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/2975c44dcdac38e39c561c5f665821551d849501)

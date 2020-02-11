@@ -23,10 +23,17 @@
 
 [Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/8d0ddbe26b7c0a119fbdc9fd96341c663847336d#diff-c8e15dcc73ea5d9c641ccd3ed9aefc55)
 
+### Project 3 - Challenge 3
+
+> Go back to project 2 and create a FlagImage() view that renders one flag image using the specific set of modifiers we had.
+
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/df41de646f16ce319e0023b32441ed696d458242)
+
 ## Resources
 
 https://www.hackingwithswift.com/quick-start/swiftui/formatting-interpolated-strings-in-swiftui   
 https://www.hackingwithswift.com/quick-start/swiftui/how-to-make-a-fixed-size-spacer   
 https://www.hackingwithswift.com/quick-start/swiftui/how-to-show-multiple-alerts-in-a-single-view   
 https://stackoverflow.com/questions/58069516/how-can-i-have-two-alerts-on-one-view-in-swiftui   
+https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-and-compose-custom-views
 
