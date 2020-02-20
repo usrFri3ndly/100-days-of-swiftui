@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
-    @State private var coffeeAmount = 1
+    @State private var coffeeAmount = 0
     
     @State private var alertTitle = ""
     @State private var alertMessage = ""
@@ -37,7 +37,7 @@ struct ContentView: View {
                 
                 Section(header: Text("Daily coffee intake")) {
                     
-                    Stepper(value: $coffeeAmount, in: 1...20) {
+                    Stepper(value: $coffeeAmount, in: 0...20) {
                         if coffeeAmount == 1 {
                             Text("1 cup")
                         } else {
@@ -45,14 +45,15 @@ struct ContentView: View {
                         }
                     }
                 }
+                
+                Section(header: Text("Recommended bedtime") .font(.headline)) {
+                    Text("\(calculateBedtime)")
+                        .font(.title)
+                }
             }
+                
         .navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing: Button(action: calculateBedtime) {
-                Text("Calculate")
-            })
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Okay")))
-            }
+            
         }
     }
     
@@ -63,12 +64,15 @@ struct ContentView: View {
         return Calendar.current.date(from: components) ?? Date()
     }
     
-    func calculateBedtime() {
+    var calculateBedtime: String {
+        
         let model = SleepCalculator()
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
         // use 0 if hour or minute cant be read
         let hour = (components.hour ?? 0) * 60 * 60
         let minute = (components.minute ?? 0) * 60
+        
+        var recommendedBedtime: String
         
         do {
             let predition = try model.prediction(wake: Double(hour + minute), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
@@ -78,15 +82,15 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
             
-            alertMessage = formatter.string(from: sleepTime)
-            alertTitle = "Your ideal bedtime is.."
+            recommendedBedtime = formatter.string(from: sleepTime)
             
-        } catch {
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
-        }
+            } catch {
+
+                recommendedBedtime = "Sorry, there was a problem calculating your bedtime."
+            }
         
-        showingAlert = true
+        return recommendedBedtime
+        
     }
 }
 
