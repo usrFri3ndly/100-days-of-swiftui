@@ -35,6 +35,9 @@ struct ContentView: View {
                 }
             }
         .navigationBarTitle(rootWord)
+        .navigationBarItems(leading: Button("New Game") {
+            self.startGame()
+        })
         .onAppear(perform: startGame)
             .alert(isPresented: $showingError) {
                 Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("Okay")))
@@ -71,6 +74,8 @@ struct ContentView: View {
      }
     
     func startGame() {
+        usedWords.removeAll()
+        
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
                 let allWords = startWords.components(separatedBy: "\n")
