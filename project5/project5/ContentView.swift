@@ -19,9 +19,11 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var playerScore = 0
+    
     var body: some View {
         NavigationView {
-            VStack {
+            VStack (alignment: .leading) {
                 
                 TextField("Enter your word", text: $newWord, onCommit: addNewWord)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -33,7 +35,12 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                
+                Text("Score: \(playerScore)")
+                    .font(.headline)
+                    .padding()
             }
+         
         .navigationBarTitle(rootWord)
         .navigationBarItems(leading: Button("New Game") {
             self.startGame()
@@ -69,12 +76,14 @@ struct ContentView: View {
             return
         }
         
+        playerScore += answer.count * 1
         usedWords.insert(answer, at: 0)
         newWord = ""
      }
     
     func startGame() {
         usedWords.removeAll()
+        playerScore = 0
         
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWords = try? String(contentsOf: startWordsURL) {
