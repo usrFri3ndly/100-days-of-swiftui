@@ -50,15 +50,19 @@ struct ContentView: View {
             return
         }
         
-        guard isOriginal(word: answer) else { wordError(title: "Word used already", message: "Be more original!")
+        guard isOriginal(word: answer) else { wordError(title: "Word Used Already", message: "Be more original!")
             return
         }
         
-        guard isPossible(word: answer) else { wordError(title: "Word not recognised", message: "Stop making words up!")
+        guard isPossible(word: answer) else { wordError(title: "Word Not Recognised", message: "You can't make '\(answer)' from '\(rootWord)'")
             return
         }
         
-        guard isReal(word: answer) else { wordError(title: "Word not possible", message: "That isn't a real word!")
+        guard isReal(word: answer) else { wordError(title: "Word Not Possible", message: "That isn't a real word!")
+            return
+        }
+        
+        guard isShort(word: answer) else { wordError(title: "Word Too Short", message: "Sorry, but that word is too short!")
             return
         }
         
@@ -78,7 +82,11 @@ struct ContentView: View {
     }
     
     func isOriginal(word: String) -> Bool {
-        !usedWords.contains(word)
+        if word == rootWord {
+            return false
+        }
+        
+        return !usedWords.contains(word)
     }
     
     func isPossible(word: String) -> Bool {
@@ -101,6 +109,14 @@ struct ContentView: View {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
         
         return misspelledRange.location == NSNotFound
+    }
+    
+    func isShort(word: String) -> Bool {
+        if word.count < 3 {
+            return false
+        } else {
+            return true
+        }
     }
     
     func wordError(title: String, message: String) {
