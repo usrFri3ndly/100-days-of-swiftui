@@ -60,6 +60,10 @@ struct ContentView: View {
             return
         }
         
+        guard isShort(word: answer) else { wordError(title: "Word Too Short", message: "Sorry, but that word is too short!")
+            return
+        }
+        
         guard isOriginal(word: answer) else { wordError(title: "Word Used Already", message: "Be more original!")
             return
         }
@@ -72,9 +76,6 @@ struct ContentView: View {
             return
         }
         
-        guard isShort(word: answer) else { wordError(title: "Word Too Short", message: "Sorry, but that word is too short!")
-            return
-        }
         
         playerScore += answer.count * 1
         usedWords.insert(answer, at: 0)
