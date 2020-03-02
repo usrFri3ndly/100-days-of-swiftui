@@ -35,7 +35,7 @@ struct ContentView: View {
     @State private var playerGuess = 0
     @State private var playerCorrectGuess = false
     
-    @State private var animationAmount: CGFloat = 1
+    @State private var buttonOpacity = false
     
     @State private var score = 0
     @State private var showingScore = false
@@ -68,6 +68,7 @@ struct ContentView: View {
                     }
                         
                     .rotation3DEffect(.degrees(self.playerCorrectGuess && self.playerGuess == number ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+                    .opacity(Double(self.buttonOpacity && self.playerGuess != number ? 0.25 : 1))
                     //.scaleEffect(self.playerCorrectGuess && self.playerGuess == number ? 1 : 1)
                 }
                 Spacer()
@@ -98,6 +99,7 @@ struct ContentView: View {
         if number == correctAnswer {
             playerGuess = number
             playerCorrectGuess = true
+            buttonOpacity = true
             score += 1
             scoreTitle = "Correct"
             scoreMessage = "Your score is \(score)"
@@ -113,6 +115,7 @@ struct ContentView: View {
     
     func askQuestion() {
         self.playerCorrectGuess = false
+        buttonOpacity = false
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
