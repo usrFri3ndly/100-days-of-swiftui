@@ -29,6 +29,18 @@
 
 [Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/df41de646f16ce319e0023b32441ed696d458242)
 
+### Project 6 - Challenge 1
+
+> When you tap the correct flag, make it spin around 360 degrees on the Y axis.
+
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/860966e6a3d6a30df7ba03a6e70b40cab3e8de58#diff-c8e15dcc73ea5d9c641ccd3ed9aefc55)
+
+### Project 6 - Challenge 2
+
+> Make the other two buttons fade out to 25% opacity.
+
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/8fb40413f17d6e76fbbece9a21d0bf631da99148#diff-c8e15dcc73ea5d9c641ccd3ed9aefc55)
+
 ## Resources
 
 https://www.hackingwithswift.com/quick-start/swiftui/formatting-interpolated-strings-in-swiftui   
