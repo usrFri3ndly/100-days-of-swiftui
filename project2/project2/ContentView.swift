@@ -32,6 +32,11 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     
+    @State private var playerGuess = 0
+    @State private var playerCorrectGuess = false
+    
+    @State private var animationAmount: CGFloat = 1
+    
     @State private var score = 0
     @State private var showingScore = false
     @State private var scoreTitle = ""
@@ -55,10 +60,15 @@ struct ContentView: View {
                 
                 ForEach(0..<3) { number in
                     Button(action: {
-                        self.flagTapped(number)
+                        withAnimation {
+                            self.flagTapped(number)
+                        }
                     }) {
                         FlagImage(country: self.countries[number])
                     }
+                        
+                    .rotation3DEffect(.degrees(self.playerCorrectGuess && self.playerGuess == number ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+                    //.scaleEffect(self.playerCorrectGuess && self.playerGuess == number ? 1 : 1)
                 }
                 Spacer()
                     .frame(height: 30)
@@ -86,6 +96,8 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         if number == correctAnswer {
+            playerGuess = number
+            playerCorrectGuess = true
             score += 1
             scoreTitle = "Correct"
             scoreMessage = "Your score is \(score)"
@@ -100,6 +112,7 @@ struct ContentView: View {
     }
     
     func askQuestion() {
+        self.playerCorrectGuess = false
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }
