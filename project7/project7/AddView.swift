@@ -18,6 +18,8 @@ struct AddView: View {
     @State private var amount = ""
     static let types = ["Business", "Personal"]
     
+    @State private var invalidAmountAlert = false
+    
     var body: some View {
         NavigationView {
             Form {
@@ -40,8 +42,13 @@ struct AddView: View {
                     let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
                     self.expenses.items.append(item)
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    self.invalidAmountAlert = true
                 }
-        })
+            })
+            .alert(isPresented: $invalidAmountAlert) {
+                Alert(title: Text("Invalid Amount"), message: Text("Please enter a whole number"), dismissButton: .default(Text("Continue")))
+            }
         }
     }
 }
