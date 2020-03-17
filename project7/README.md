@@ -1,4 +1,4 @@
-# Project 5 - Word Scramble
+# Project 7 - iExpense
 
 ![App Screenshot 1](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project7/screenshot.png)
 
