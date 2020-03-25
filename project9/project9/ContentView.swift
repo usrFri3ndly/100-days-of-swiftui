@@ -16,10 +16,10 @@ struct Arrow: Shape {
         path.move(to: CGPoint(x: rect.midX, y: rect.minY))
         path.addLine(to: CGPoint(x: rect.minX, y: rect.midY))
         path.addLine(to: CGPoint(x: rect.minX + 30, y: rect.midY))
-        path.addLine(to: CGPoint(x: rect.midX - 10, y: rect.minY + 35))
-        path.addLine(to: CGPoint(x: rect.midX - 10, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX + 10, y: rect.maxY))
-        path.addLine(to: CGPoint(x: rect.midX + 10, y: rect.minY + 35))
+        path.addLine(to: CGPoint(x: rect.midX - 10.5, y: rect.minY + 40))
+        path.addLine(to: CGPoint(x: rect.midX - 10.5, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX + 10.5, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX + 10.5, y: rect.minY + 40))
        //path.addLine(to: CGPoint(x: rect.midX, y: rect.minY + 30))
         path.addLine(to: CGPoint(x: rect.maxX - 30, y: rect.midY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.midY))
@@ -50,10 +50,28 @@ struct Arrow: Shape {
 }
 
 struct ContentView: View {
+    
+    @State private var lineWidth: CGFloat = 2
+    
     var body: some View {
-        Arrow()
-            .stroke(Color.red, lineWidth: 10)
-        .frame(width: 300, height: 300)
+    
+        VStack {
+            Arrow()
+                .stroke(Color.red, lineWidth: lineWidth)
+                .frame(width: 300, height: 300)
+            
+            Slider(value: $lineWidth, in: 2...25)
+            
+            Arrow()
+            .stroke(Color.blue, lineWidth: lineWidth)
+            .frame(width: 300, height: 300)
+            .onTapGesture {
+                withAnimation {
+                    self.lineWidth = CGFloat.random(in: 2...25)
+                }
+            }
+            
+        }
     }
 }
 
