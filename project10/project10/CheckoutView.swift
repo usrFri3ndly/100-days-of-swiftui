@@ -12,6 +12,7 @@ struct CheckoutView: View {
     
     @ObservedObject var order: Order
     @State private var confirmationMessage = ""
+    @State private var confirmationTitle = ""
     @State private var showingConfirmation = false
     
     var body: some View {
@@ -35,7 +36,7 @@ struct CheckoutView: View {
         }
         .navigationBarTitle("Checkout", displayMode: .inline)
         .alert(isPresented: $showingConfirmation) {
-            Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("Ok")))
+            Alert(title: Text(confirmationTitle), message: Text(confirmationMessage), dismissButton: .default(Text("Okay")))
         }
     }
     
@@ -55,11 +56,14 @@ struct CheckoutView: View {
         URLSession.shared.dataTask(with: request) {
             data, response, error in
             guard let data = data else {
-                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                self.confirmationTitle = "Error"
+                self.confirmationMessage = "No data in response: \(error?.localizedDescription ?? "Unknown error")"
+                self.showingConfirmation = true
                 return
             }
             
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
+                self.confirmationTitle = "Thank You!"
                 self.confirmationMessage = "Your order for \(decodedOrder.quantity) x \(Order.types[decodedOrder.type]) cupcakes is on its way!"
                 self.showingConfirmation = true
             } else {
