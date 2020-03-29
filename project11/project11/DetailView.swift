@@ -12,7 +12,18 @@ import CoreData
 struct DetailView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
+    
     @State private var showingDeleteAlert = false
+    
+    private var formattedDate: String {
+        guard let reviewDate = book.date else {
+            return "N/A"
+        }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        return dateFormatter.string(from: reviewDate)
+    }
     
     let book: Book
     
@@ -42,6 +53,9 @@ struct DetailView: View {
                 
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
+                
+                Text("Review Date: \(self.formattedDate)")
+                    .padding()
                 
                 Spacer()
             }
