@@ -12,7 +12,7 @@ import CoreData
 struct DetailView: View {
     @Environment(\.managedObjectContext) var moc
     @Environment(\.presentationMode) var presentationMode
-    @State private var showingDeleteAlert = true
+    @State private var showingDeleteAlert = false
     
     let book: Book
     
