@@ -16,6 +16,8 @@ struct ContentView: View {
     
     @State private var showingFilterSheet = false
     @State private var showingImagePicker = false
+    @State private var showingError = false
+
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
     
@@ -67,7 +69,12 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save") {
-                        guard let processedImage = self.processedImage else { return }
+                        guard let processedImage = self.processedImage else {
+                            //print("No image")
+                            self.showingError.toggle()
+                            return
+                        }
+                        
                         let imageSaver = ImageSaver()
                         
                         imageSaver.successHandler = {
@@ -77,7 +84,6 @@ struct ContentView: View {
                         imageSaver.errorHandler = {
                             print("Oops: \($0.localizedDescription)")
                         }
-                        
                         imageSaver.writeToPhotoAlbum(image: processedImage)
                     }
                 }
@@ -99,6 +105,9 @@ struct ContentView: View {
                     .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
                     .cancel()
                 ])
+            }
+            .alert(isPresented: $showingError) {
+                Alert(title: Text("Error Saving"), message: Text("Please select a photo first!"), dismissButton: .default(Text("Dismiss")))
             }
         }
     }
