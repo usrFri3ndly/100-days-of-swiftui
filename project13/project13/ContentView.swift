@@ -71,7 +71,6 @@ struct ContentView: View {
                     Text("Intensity")
                     Slider(value: intensity)
                 }
-                .padding(.vertical)
                 HStack {
                     Text("Radius")
                     Slider(value: radius)
