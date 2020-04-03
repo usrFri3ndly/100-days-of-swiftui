@@ -20,6 +20,7 @@ struct ContentView: View {
 
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
+    @State private var filterName = "Sepia Tone"
     
     @State var currentFilter: CIFilter = CIFilter.sepiaTone()
     let context = CIContext()
@@ -62,7 +63,7 @@ struct ContentView: View {
                 .padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
+                    Button("Filter: \(filterName)") {
                         self.showingFilterSheet = true
                     }
                     
@@ -95,14 +96,22 @@ struct ContentView: View {
             }
             .actionSheet(isPresented: $showingFilterSheet) {
                 ActionSheet(title: Text("Select a filter"), buttons: [
-                    .default(Text("Crystalize")) {
-                        self.setFilter(CIFilter.crystallize()) },
-                    .default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-                    .default(Text("Guassian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()) },
-                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()) },
-                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
+                    .default(Text("Crystallize")) {
+                        self.setFilter(CIFilter.crystallize())
+                        self.filterName = "Crystallize" } ,
+                    .default(Text("Edges")) {
+                        self.setFilter(CIFilter.edges())
+                        self.filterName = "Edges" },
+                    .default(Text("Guassian Blur")) { self.setFilter(CIFilter.gaussianBlur())
+                        self.filterName = "Guassian Blur" },
+                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate())
+                        self.filterName = "Pixellate" },
+                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone())
+                        self.filterName = "Sepia Tone" },
+                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask())
+                        self.filterName = "Unsharp Mask" },
+                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette())
+                        self.filterName = "Vignette" },
                     .cancel()
                 ])
             }
