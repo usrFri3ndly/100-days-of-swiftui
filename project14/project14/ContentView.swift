@@ -18,7 +18,6 @@ struct ContentView: View {
     @State private var showingEditScreen = false
     @State private var isUnlocked = false
     
-    
     var body: some View {
         ZStack {
             if isUnlocked {
@@ -43,12 +42,12 @@ struct ContentView: View {
                             self.showingEditScreen = true
                         }) {
                             Image(systemName: "plus")
+                            .padding()
+                            .background(Color.black.opacity(0.75))
+                            .foregroundColor(.white)
+                            .font(.title)
+                            .clipShape(Circle())
                         }
-                        .padding()
-                        .background(Color.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
                         .padding(.trailing)
                     }
                 }

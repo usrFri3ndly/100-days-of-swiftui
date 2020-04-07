@@ -75,9 +75,9 @@
 				82753E6B243A10BE008B7F0C /* Preview Content */,
 				82753E79243A18BA008B7F0C /* MapView.swift */,
 				82155F1F243B868D00CD6AF8 /* MKPointAnnotation-ObservableObject.swift */,
+				82155F25243BAED300CD6AF8 /* MKPointAnnotation-Codable.swift */,
 				82155F21243B872100CD6AF8 /* EditView.swift */,
 				82155F23243BA90A00CD6AF8 /* Result.swift */,
-				82155F25243BAED300CD6AF8 /* MKPointAnnotation-Codable.swift */,
 			);
 			path = project14;
 			sourceTree = "<group>";
