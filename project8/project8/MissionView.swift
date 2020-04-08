@@ -27,6 +27,7 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.7)
                         .padding()
+                        .accessibility(hidden: true)
                     
                     Text("Launch Date: \(self.mission.formattedLaunchDate)")
                         .font(.headline)
@@ -55,6 +56,8 @@ struct MissionView: View {
                                     Text(CrewMember.role)
                                         .foregroundColor(.secondary)
                                 }
+                                .accessibilityElement(children: .ignore)
+                                .accessibility(label: Text("Crew Member: \(CrewMember.astronaut.name). Role: \(CrewMember.role)"))
                                 
                                 Spacer()
                             }

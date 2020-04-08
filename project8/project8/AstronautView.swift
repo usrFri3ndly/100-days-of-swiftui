@@ -21,6 +21,7 @@ struct AstronautView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: geometry.size.width)
+                        .accessibility(hidden: true)
                     
                     VStack(alignment: .leading) {
                         Text(self.astronaut.description)
