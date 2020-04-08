@@ -17,5 +17,10 @@
 
 [Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/5714d3466f6e5ece1e5ce57be71a03e4237fd513#diff-83cfb0500c7796162288f17c73c1aaa9)
 
+### Project 15 - Challenge 3
+
+> Do a full accessibility review of Moonshot – what changes do you need to make so that it’s fully accessible?
+
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/58b954fa2e223b5ddb27765bae1310f523d0184e)
 
 
