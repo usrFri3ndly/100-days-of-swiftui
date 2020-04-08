@@ -1,7 +1,7 @@
 # Project 10 - Cupcake Corner
 
-![App Screenshot 1](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project11/screenshot.png)
-![App Screenshot 2](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project11/screenshot-delivery.png)
+![App Screenshot 1](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project10/screenshot.png)
+![App Screenshot 2](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project10/screenshot-delivery.png)
 
 ## Challenges
 
