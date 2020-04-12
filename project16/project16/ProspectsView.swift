@@ -14,12 +14,19 @@ enum FilterType {
     case none, contacted, uncontacted
 }
 
+enum SortBy {
+    case name, mostRecent
+}
+
 struct ProspectsView: View {
     
     @EnvironmentObject var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var isShowingSorting = false
     
+    // default sort
+    @State private var sortBy: SortBy = .name
     let filter: FilterType
     
     var title: String {
@@ -44,10 +51,19 @@ struct ProspectsView: View {
         }
     }
     
+    var sortedProspects: [Prospect] {
+        switch sortBy {
+            case .name:
+            return filteredProspects.sorted(by: { $0.name < $1.name })
+          case .mostRecent:
+            return filteredProspects.sorted(by: { $0.dateAdded > $1.dateAdded })
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(sortedProspects) { prospect in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(prospect.name)
@@ -76,17 +92,32 @@ struct ProspectsView: View {
                     }
                 }
             }
-                .navigationBarTitle(title)
-                .navigationBarItems(trailing: Button(action : {
+            .navigationBarTitle(title)
+            .navigationBarItems(leading:
+                Button(action : {
+                    self.isShowingSorting = true
+                }) {
+                        Image(systemName: "arrow.up.arrow.down.circle")
+                        Text("Sort")
+                    }, trailing:
+                Button(action : {
                     self.isShowingScanner = true
                 }) {
-                    Image(systemName: "qrcode.viewfinder")
-                    Text("Scan")
-                })
-                
-                .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
-                }
+                        Image(systemName: "qrcode.viewfinder")
+                        Text("Scan")
+                    })
+            
+            .actionSheet(isPresented: $isShowingSorting) {
+                ActionSheet(title: Text("Sort By"), message: nil, buttons: [
+                    .default(Text("Name")) { self.sortBy = .name },
+                    .default(Text("Most Recent")) { self.sortBy = .mostRecent },
+                    .cancel()
+                ])
+            }
+            
+            .sheet(isPresented: $isShowingScanner) {
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
+            }
         }
     }
     

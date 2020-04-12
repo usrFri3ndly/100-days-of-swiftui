@@ -10,6 +10,7 @@ import SwiftUI
 
 class Prospect: Identifiable, Codable {
     let id = UUID()
+    var dateAdded = Date()
     var name = "Anonymous"
     var emailAddress = ""
     fileprivate(set) var isContacted = false
