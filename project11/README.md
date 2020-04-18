@@ -1,4 +1,4 @@
-# Project 2 - Guess the Flag
+# Project 11 - Bookworm
 
 ![App Screenshot 1](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project11/screenshot.png)
 ![App Screenshot 2](https://raw.githubusercontent.com/usrFri3ndly/100-days-of-swiftui/master/project11/screenshot-detailView.png)

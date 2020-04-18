@@ -21,5 +21,5 @@
 
 > The check out view in Cupcake Corner uses an image that doesn’t add anything to the UI, so find a way to make the screenreader not read it out.
 
-[Commit](hhttps://github.com/usrFri3ndly/100-days-of-swiftui/commit/5b3dafd438c8963cfcb0a0cb36a690f40f7e1152#diff-dc54093c8604f4bc95a3f8afe6e16850)
+[Commit](https://github.com/usrFri3ndly/100-days-of-swiftui/commit/5b3dafd438c8963cfcb0a0cb36a690f40f7e1152#diff-dc54093c8604f4bc95a3f8afe6e16850)
 
