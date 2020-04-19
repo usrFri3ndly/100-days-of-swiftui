@@ -82,7 +82,6 @@ struct ResortView: View {
         .alert(item: $selectedFacility) { facility in
             facility.alert
         }
-        
     }
 }
 
