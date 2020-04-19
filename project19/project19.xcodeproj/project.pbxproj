@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8235C6D7244C76ED00D9226B /* ImageCredit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8235C6D6244C76ED00D9226B /* ImageCredit.swift */; };
 		82E3B1732449FE81006D2059 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3B1722449FE81006D2059 /* AppDelegate.swift */; };
 		82E3B1752449FE81006D2059 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3B1742449FE81006D2059 /* SceneDelegate.swift */; };
 		82E3B1772449FE81006D2059 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E3B1762449FE81006D2059 /* ContentView.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8235C6D6244C76ED00D9226B /* ImageCredit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCredit.swift; sourceTree = "<group>"; };
 		82E3B16F2449FE81006D2059 /* project19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project19.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E3B1722449FE81006D2059 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82E3B1742449FE81006D2059 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				82E3B18E244A0C20006D2059 /* ResortView.swift */,
 				82E3B192244B001B006D2059 /* ResortDetailsView.swift */,
 				82E3B190244A0E05006D2059 /* SkiDetailsView.swift */,
+				8235C6D6244C76ED00D9226B /* ImageCredit.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				82E3B197244B3DC4006D2059 /* Favourites.swift in Sources */,
 				82E3B193244B001B006D2059 /* ResortDetailsView.swift in Sources */,
 				82E3B1772449FE81006D2059 /* ContentView.swift in Sources */,
+				8235C6D7244C76ED00D9226B /* ImageCredit.swift in Sources */,
 				82E3B191244A0E05006D2059 /* SkiDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
