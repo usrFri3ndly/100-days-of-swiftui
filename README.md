@@ -9,8 +9,12 @@ Projects from my 100 Days of SwiftUI journey!
 [Project 08](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project8) - 🚀 Moonshoot  
 [Project 09](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project9) - ✏️ Drawing   
 [Project 10](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project10) - 🧁 Cupcake Corner   
-[Project 11](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project11) - 📚 Bookworm
-[Project 13](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project13) - 📸 Instafilter
+[Project 11](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project11) - 📚 Bookworm   
+[Project 13](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project13) - 📸 Instafilter   
+[Project 14](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project14) - 🗺 Bucket List   
+[Project 16](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project16) - 🔥 Hot Prospects   
+[Project 17](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project17) - 🎴 Flashzilla   
+[Project 19](https://github.com/usrFri3ndly/100-days-of-swiftui/tree/master/project19) - ⛷ Snowseeker
 
 
 
